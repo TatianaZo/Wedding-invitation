@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дмитрий & София — 09.09.2029</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="splash-active">
+  <div class="splash" id="splash" aria-hidden="false">
+    <img class="splash__bg" src="БассейнОткрытый.png" alt="">
+    <div class="splash__overlay"></div>
+    <div class="splash__content">
+      <p class="splash__eyebrow">Свадебное приглашение</p>
+      <div class="ornament ornament--light" aria-hidden="true"><span></span></div>
+      <p class="splash__names">Дмитрий <span>&</span> София</p>
+      <p class="splash__date">09 · 09 · 2029</p>
+      <button type="button" class="splash__open" id="splash-open">Открыть приглашение</button>
+    </div>
+  </div>
+
+  <div class="site-controls" id="site-controls" hidden>
+    <button type="button" class="site-controls__btn" id="theme-toggle" aria-label="Сменить тему" title="Тема">
+      <span class="site-controls__icon site-controls__icon--theme" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="site-controls__btn" id="audio-toggle" aria-label="Выключить музыку" title="Музыка" aria-pressed="true">
+      <span class="site-controls__icon site-controls__icon--audio-on" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" hidden>
+    <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Закрыть">×</button>
+    <button type="button" class="lightbox__side-btn lightbox__side-btn--prev" id="lightbox-side-prev" aria-label="Предыдущее фото" tabindex="-1">
+      <img class="lightbox__side-img" id="lightbox-thumb-prev" alt="">
+    </button>
+    <div class="lightbox__center">
+      <button type="button" class="lightbox__arrow lightbox__arrow--prev" id="lightbox-prev" aria-label="Назад">‹</button>
+      <figure class="lightbox__main">
+        <img class="lightbox__img" id="lightbox-img" src="" alt="">
+        <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+      </figure>
+      <button type="button" class="lightbox__arrow lightbox__arrow--next" id="lightbox-next" aria-label="Вперёд">›</button>
+    </div>
+    <button type="button" class="lightbox__side-btn lightbox__side-btn--next" id="lightbox-side-next" aria-label="Следующее фото" tabindex="-1">
+      <img class="lightbox__side-img" id="lightbox-thumb-next" alt="">
+    </button>
+  </div>
+
+  <main class="main-site" id="main-site" hidden>
+  <header class="hero hero--invitation" id="top">
+    <div class="hero__card">
+      <div class="hero__monogram" aria-hidden="true">
+        <svg class="hero__branch hero__branch--left" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M70 110C55 95 45 70 50 45C52 30 60 18 68 8" stroke="currentColor" stroke-width="0.8"/>
+          <path d="M68 8C58 22 42 28 28 24M68 8C62 35 48 52 32 58M50 45C38 55 22 62 10 68M32 58C24 72 18 88 14 105" stroke="currentColor" stroke-width="0.7"/>
+          <ellipse cx="28" cy="24" rx="4" ry="7" fill="currentColor" opacity="0.35" transform="rotate(-25 28 24)"/>
+          <ellipse cx="10" cy="68" rx="3.5" ry="6" fill="currentColor" opacity="0.3" transform="rotate(15 10 68)"/>
+        </svg>
+        <p class="hero__initials">Д <span>|</span> С</p>
+        <svg class="hero__branch hero__branch--right" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 110C25 95 35 70 30 45C28 30 20 18 12 8" stroke="currentColor" stroke-width="0.8"/>
+          <path d="M12 8C22 22 38 28 52 24M12 8C18 35 32 52 48 58M30 45C42 55 58 62 70 68M48 58C56 72 62 88 66 105" stroke="currentColor" stroke-width="0.7"/>
+          <ellipse cx="52" cy="24" rx="4" ry="7" fill="currentColor" opacity="0.35" transform="rotate(25 52 24)"/>
+          <ellipse cx="70" cy="68" rx="3.5" ry="6" fill="currentColor" opacity="0.3" transform="rotate(-15 70 68)"/>
+        </svg>
+      </div>
+
+      <h1 class="hero__names">
+        <span>Дмитрий</span>
+        <span class="hero__flourish" aria-hidden="true"></span>
+        <span>София</span>
+      </h1>
+
+      <p class="hero__date">09 СЕНТЯБРЯ, 2029</p>
+
+      <p class="hero__invite">С чувством великой радости приглашаем вас<br>разделить с нами день нашего бракосочетания</p>
+
+      <p class="hero__venue">церемония в 09:09 · на природе у озера</p>
+
+      <a class="hero__cta" href="#rsvp">Подтвердить присутствие</a>
+      <a class="hero__scroll" href="#countdown" aria-label="Листать вниз">↓</a>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#countdown">До свадьбы</a>
+    <a href="#couple">Мы</a>
+    <a href="#about">О празднике</a>
+    <a href="#venue">Место</a>
+    <a href="#schedule">Расписание</a>
+    <a href="#transport">Трансфер</a>
+    <a href="#wishes">Пожелания</a>
+    <a href="#rsvp">Анкета</a>
+  </nav>
+
+  <section class="countdown section" id="countdown">
+    <div class="container">
+      <p class="section__eyebrow">Отсчёт времени</p>
+      <h2 class="section__title">До свадьбы осталось</h2>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <div class="countdown__grid" id="countdown-timer" aria-live="polite">
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-years">—</span>
+          <span class="countdown__label">лет</span>
+        </div>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-months">—</span>
+          <span class="countdown__label">месяцев</span>
+        </div>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-days">—</span>
+          <span class="countdown__label">дней</span>
+        </div>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-hours">—</span>
+          <span class="countdown__label">часов</span>
+        </div>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-minutes">—</span>
+          <span class="countdown__label">минут</span>
+        </div>
+        <div class="countdown__item">
+          <span class="countdown__value" id="cd-seconds">—</span>
+          <span class="countdown__label">секунд</span>
+        </div>
+      </div>
+      <p class="countdown__ceremony">Церемония бракосочетания — <strong>9 сентября 2029 в 09:09</strong></p>
+    </div>
+  </section>
+
+  <section class="couple section" id="couple">
+    <div class="container">
+      <p class="section__eyebrow">Жених и невеста</p>
+      <h2 class="section__title">Дмитрий & София</h2>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <div class="couple__grid">
+        <article class="couple__card reveal">
+          <div class="couple__frame lightbox-trigger" data-caption="Дмитрий Кошкин" tabindex="0" role="button" aria-label="Открыть фото: Дмитрий Кошкин">
+            <img src="Дмитрий Кошкин.jpg" alt="Дмитрий Кошкин">
+          </div>
+          <h3>Дмитрий Кошкин</h3>
+        </article>
+        <div class="couple__ampersand reveal">&</div>
+        <article class="couple__card reveal">
+          <div class="couple__frame lightbox-trigger" data-caption="София Собакина" tabindex="0" role="button" aria-label="Открыть фото: София Собакина">
+            <img src="София Собакина.png" alt="София Собакина">
+          </div>
+          <h3>София Собакина</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about section" id="about">
+    <div class="container about__inner">
+      <div class="about__text reveal">
+        <p class="section__eyebrow">Торжество</p>
+        <h2 class="section__title">О нашем празднике</h2>
+        <div class="ornament" aria-hidden="true"><span></span></div>
+        <p>Мы будем счастливы видеть вас на нашей свадьбе — <strong>выездной церемонии на природе</strong> у озера в окружении соснового леса.</p>
+        <ul class="about__facts">
+          <li><span>Заезд</span> 8 сентября 2029</li>
+          <li><span>Церемония</span> 9 сентября в 09:09</li>
+          <li><span>Выезд</span> 10 сентября 2029</li>
+        </ul>
+        <p>Для всех гостей предусмотрены <strong>номера, питание и развлечения</strong> на всё время пребывания. Три дня отдыха, торжества и тёплой компании — именно так мы мечтаем провести этот праздник вместе с вами.</p>
+      </div>
+      <figure class="about__image reveal lightbox-trigger" data-caption="Место церемонии на берегу озера" tabindex="0" role="button" aria-label="Открыть фото: место церемонии">
+        <img src="Место церемонии.png" alt="Место выездной церемонии">
+        <figcaption>Место церемонии на берегу озера</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="venue section" id="venue">
+    <div class="container">
+      <p class="section__eyebrow">Резиденция</p>
+      <h2 class="section__title">Место отдыха и праздника</h2>
+      <div class="ornament ornament--light" aria-hidden="true"><span></span></div>
+      <p class="section__lead">Частная усадьба на берегу озера — номера, ресторан, спа и залы для торжества в окружении векового леса.</p>
+      <div class="gallery" id="gallery">
+        <figure class="gallery__item gallery__item--wide lightbox-trigger" data-caption="Отель на берегу озера" tabindex="0" role="button">
+          <img src="Отель.png" alt="Отель">
+          <figcaption>Отель на берегу озера</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Холл" tabindex="0" role="button">
+          <img src="Холл.png" alt="Холл">
+          <figcaption>Холл</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Ресторан" tabindex="0" role="button">
+          <img src="Ресторан.png" alt="Ресторан">
+          <figcaption>Ресторан</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Номер для гостей" tabindex="0" role="button">
+          <img src="Спальня.png" alt="Спальня">
+          <figcaption>Номер для гостей</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Ванная комната" tabindex="0" role="button">
+          <img src="Уборная.png" alt="Уборная">
+          <figcaption>Ванная комната</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Спа-зона" tabindex="0" role="button">
+          <img src="Спа.png" alt="Спа">
+          <figcaption>Спа-зона</figcaption>
+        </figure>
+        <figure class="gallery__item lightbox-trigger" data-caption="Открытый бассейн" tabindex="0" role="button">
+          <img src="БассейнОткрытый.png" alt="Открытый бассейн">
+          <figcaption>Открытый бассейн</figcaption>
+        </figure>
+      </div>
+      <div class="amenities">
+        <div class="amenities__item">
+          <h4>Проживание</h4>
+          <p>Комфортабельные номера с 8 по 10 сентября включительно.</p>
+        </div>
+        <div class="amenities__item">
+          <h4>Развлечения</h4>
+          <p>Спа, бассейн, джакузи, прогулки по лесу, лодки на озере, настольные игры, караоке, живая музыка, танцы, винная дегустация и вечерний костёр.</p>
+        </div>
+        <div class="amenities__item">
+          <h4>Питание</h4>
+          <p>Завтраки, обеды и торжественные ужины в ресторане отеля.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="schedule section" id="schedule">
+    <div class="container">
+      <p class="section__eyebrow">Программа</p>
+      <h2 class="section__title">Свадебное расписание</h2>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+
+      <div class="schedule-day">
+        <h3 class="schedule-day__title">8 сентября — заезд</h3>
+        <ul class="timeline">
+          <li>
+            <time>12:00</time>
+            <div>
+              <strong>Сбор гостей</strong>
+              <p>Встреча автобуса у метро «Проспект Просвещения», трансфер на место отдыха.</p>
+            </div>
+          </li>
+          <li>
+            <time>~14:00</time>
+            <div>
+              <strong>Заселение</strong>
+              <p>Прибытие в отель, размещение в номерах, отдых после дороги.</p>
+            </div>
+          </li>
+          <li>
+            <time>15:00</time>
+            <div>
+              <strong>Обед</strong>
+              <p>Лёгкий обед в ресторане, знакомство с территорией.</p>
+            </div>
+          </li>
+          <li>
+            <time>16:00</time>
+            <div>
+              <strong>Экскурсия по территории</strong>
+              <p>Прогулка по усадьбе, знакомство с садом и берегом озера.</p>
+            </div>
+          </li>
+          <li>
+            <time>17:00</time>
+            <div>
+              <strong>Активный отдых</strong>
+              <p>Спа-зона, бассейн, джакузи, прогулки по лесу, настольные игры в холле.</p>
+            </div>
+          </li>
+          <li>
+            <time>18:30</time>
+            <div>
+              <strong>Викторина «Узнай пару»</strong>
+              <p>Лёгкая игра-знакомство с историей Дмитрия и Софии — с призами и смехом.</p>
+            </div>
+          </li>
+          <li>
+            <time>19:00</time>
+            <div>
+              <strong>Ужин</strong>
+              <p>Торжественный ужин, неформальное общение с гостями.</p>
+            </div>
+          </li>
+          <li>
+            <time>21:00</time>
+            <div>
+              <strong>Вечерняя программа</strong>
+              <p>Живая музыка, караоке, бокалы вина и уютный вечер у камина.</p>
+            </div>
+          </li>
+          <li>
+            <time>23:00</time>
+            <div>
+              <strong>Костёр у озера</strong>
+              <p>Тёплые напитки, пледы и неспешные разговоры под звёздами.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="schedule-day schedule-day--highlight">
+        <h3 class="schedule-day__title">9 сентября — день свадьбы</h3>
+        <ul class="timeline">
+          <li>
+            <time>08:00</time>
+            <div>
+              <strong>Завтрак</strong>
+              <p>Спокойное начало дня в ресторане отеля.</p>
+            </div>
+          </li>
+          <li class="timeline__main">
+            <time>09:09</time>
+            <div>
+              <strong>Церемония бракосочетания</strong>
+              <p>Выездная церемония на природе у озера — главный момент нашего дня.</p>
+            </div>
+          </li>
+          <li>
+            <time>11:00</time>
+            <div>
+              <strong>Фотосессия</strong>
+              <p>Совместные фотографии с гостями на фоне озера и леса.</p>
+            </div>
+          </li>
+          <li>
+            <time>12:30</time>
+            <div>
+              <strong>Коктейль на свежем воздухе</strong>
+              <p>Лёгкие закуски, игристое и музыка на террасе.</p>
+            </div>
+          </li>
+          <li>
+            <time>14:00</time>
+            <div>
+              <strong>Банкет</strong>
+              <p>Праздничный обед в ресторане с тостами и тёплыми словами.</p>
+            </div>
+          </li>
+          <li>
+            <time>15:30</time>
+            <div>
+              <strong>Лодки и прогулка по озеру</strong>
+              <p>Катание на вёсельных лодках и прогулка по берегу — для тех, кто любит природу и свежий воздух.</p>
+            </div>
+          </li>
+          <li>
+            <time>17:00</time>
+            <div>
+              <strong>Мастер-класс по вину</strong>
+              <p>Дегустация из семейной коллекции с рассказом о любимых сортах и парах к блюдам.</p>
+            </div>
+          </li>
+          <li>
+            <time>18:00</time>
+            <div>
+              <strong>Фотозона и инстаксъёмка</strong>
+              <p>Свободное время: спа, бассейн, настольные игры или снимки у арки и на террасе.</p>
+            </div>
+          </li>
+          <li>
+            <time>20:00</time>
+            <div>
+              <strong>Торжественный ужин и танцы</strong>
+              <p>Праздничный ужин, первый танец, дискотека и караоке до позднего вечера.</p>
+            </div>
+          </li>
+          <li>
+            <time>23:30</time>
+            <div>
+              <strong>Салют и костёр</strong>
+              <p>Фейерверк над озером и завершение вечера у костра с горячим шоколадом.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3 class="schedule-day__title">10 сентября — выезд</h3>
+        <ul class="timeline">
+          <li>
+            <time>08:00</time>
+            <div>
+              <strong>Завтрак</strong>
+              <p>Прощальный завтрак с близкими.</p>
+            </div>
+          </li>
+          <li>
+            <time>10:00</time>
+            <div>
+              <strong>Утренний спа и бассейн</strong>
+              <p>Расслабляющее начало дня: джакузи, бассейн и чай на террасе.</p>
+            </div>
+          </li>
+          <li>
+            <time>11:30</time>
+            <div>
+              <strong>Прогулка «Прощание с лесом»</strong>
+              <p>Общая прогулка по тропе вдоль озера — последние кадры и воспоминания.</p>
+            </div>
+          </li>
+          <li>
+            <time>13:00</time>
+            <div>
+              <strong>Бранч на террасе</strong>
+              <p>Лёгкий обед на свежем воздухе, игристое и тёплые тосты.</p>
+            </div>
+          </li>
+          <li>
+            <time>15:00</time>
+            <div>
+              <strong>Настольные игры и лаунж</strong>
+              <p>Шахматы, «Мафия», покер на фишки — уютный зал, чай и десерты.</p>
+            </div>
+          </li>
+          <li>
+            <time>16:30</time>
+            <div>
+              <strong>Общее фото и книга пожеланий</strong>
+              <p>Групповой снимок у отеля и запись пожеланий в памятную книгу.</p>
+            </div>
+          </li>
+          <li>
+            <time>18:00</time>
+            <div>
+              <strong>Свободное время</strong>
+              <p>Сбор вещей, отдых в номере или последний заход в спа.</p>
+            </div>
+          </li>
+          <li>
+            <time>19:00</time>
+            <div>
+              <strong>Прощальный ужин-фуршет</strong>
+              <p>Лёгкие закуски, десерты и напитки перед дорогой домой.</p>
+            </div>
+          </li>
+          <li>
+            <time>20:00</time>
+            <div>
+              <strong>Отъезд автобусом</strong>
+              <p>Трансфер обратно к метро «Проспект Просвещения».</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="transport section" id="transport">
+    <div class="container transport__inner">
+      <div class="transport__visual-wrap">
+        <div class="transport__visual" id="transport-visual" tabindex="0" role="button" aria-label="Расписание трансфера. Наведите или нажмите, чтобы раскрыть" aria-expanded="false">
+        <span class="transport__expand-badge" aria-hidden="true">
+          <svg viewBox="0 0 12 12" width="10" height="10"><path d="M8 1h3v3M11 1L6 6M1 8v3h3M1 11l5-5" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        </span>
+        <div class="transport__emblem">
+          <svg class="transport__icon" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="10" width="56" height="22" rx="3" stroke="currentColor" stroke-width="1"/>
+            <path d="M8 14h48M8 28h48" stroke="currentColor" stroke-width="0.6" opacity="0.5"/>
+            <circle cx="16" cy="32" r="4" stroke="currentColor" stroke-width="1"/>
+            <circle cx="48" cy="32" r="4" stroke="currentColor" stroke-width="1"/>
+            <path d="M18 10V6h10l4 4h14v0" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+            <rect x="22" y="14" width="8" height="6" rx="0.5" stroke="currentColor" stroke-width="0.7"/>
+            <rect x="34" y="14" width="8" height="6" rx="0.5" stroke="currentColor" stroke-width="0.7"/>
+          </svg>
+        </div>
+        <div class="transport__expand">
+          <div class="transport__route">
+            <div class="transport__stop">
+              <span class="transport__stop-label">Туда</span>
+              <span class="transport__stop-date">08.09</span>
+              <span class="transport__stop-time">12:00</span>
+            </div>
+            <div class="transport__arrow" aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="transport__stop">
+              <span class="transport__stop-label">Обратно</span>
+              <span class="transport__stop-date">10.09</span>
+              <span class="transport__stop-time">20:00</span>
+            </div>
+          </div>
+          <p class="transport__metro">м. Проспект Просвещения</p>
+        </div>
+        </div>
+        <p class="transport__hint">
+          <span class="transport__hint-icon" aria-hidden="true"></span>
+          <br>
+        </p>
+      </div>
+      <div class="transport__text">
+        <p class="section__eyebrow">Логистика</p>
+        <h2 class="section__title">Трансфер для гостей</h2>
+        <p><strong>8 сентября в 12:00</strong> гостей встретит автобус и отвезёт на место отдыха.</p>
+        <p><strong>10 сентября в 20:00</strong> — обратный трансфер тем же маршрутом.</p>
+        <p class="transport__place">Место встречи: <strong>у метро «Проспект Просвещения»</strong></p>
+        <p class="transport__note">Пожалуйста, приезжайте немного заранее, чтобы мы могли отправиться вовремя.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wishes section" id="wishes">
+    <div class="container">
+      <p class="section__eyebrow"></p>
+      <h2 class="section__title">Наши пожелания</h2>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <div class="wishes__grid">
+        <blockquote class="wish-card">
+          <p>Мы будем очень благодарны, если вы воздержитесь от криков «Горько». Пусть поцелуй останется искренним проявлением чувств, а не данью традиции.</p>
+        </blockquote>
+        <blockquote class="wish-card">
+          <p>Просим вас не дарить нам цветы, так как наша любопытная кошка не позволит нам насладиться их красотой в полной мере. А вот до бутылочки вина (или иного сладкого напитка) из нашей семейной коллекции она вряд ли доберётся!</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp section" id="rsvp">
+    <div class="container">
+      <p class="section__eyebrow">Подтверждение</p>
+      <h2 class="section__title">Анкета</h2>
+      <div class="ornament ornament--light" aria-hidden="true"><span></span></div>
+      <p class="section__lead">Просим заполнить анкету до <strong>1 августа 2029</strong>, чтобы мы могли учесть ваши предпочтения.</p>
+
+      <form class="form reveal" id="rsvp-form" novalidate>
+        <label class="form__label">
+          Ваше имя и отчество:
+          <input type="text" name="name" required placeholder="Иван Иванович" autocomplete="name">
+        </label>
+
+        <fieldset class="form__fieldset">
+          <legend>Горячее на выбор:</legend>
+          <label class="form__radio">
+            <input type="radio" name="main_course" value="beef" required>
+            Говядина с овощами
+          </label>
+          <label class="form__radio">
+            <input type="radio" name="main_course" value="fish">
+            Филе лосося
+          </label>
+          <label class="form__radio">
+            <input type="radio" name="main_course" value="vegetarian">
+            Овощное рагу (вегетарианское)
+          </label>
+        </fieldset>
+
+        <label class="form__label">
+          Предпочтения по напиткам:
+          <input type="text" name="drinks" placeholder="Например: красное сухое, безалкогольный лимонад" autocomplete="off">
+        </label>
+
+        <label class="form__label">
+          Пожелания (по желанию):
+          <textarea name="notes" rows="4" placeholder="Аллергии, особые пожелания, приедете ли с парой…"></textarea>
+        </label>
+
+        <button type="submit" class="form__submit">Отправить ответ</button>
+        <p class="form__message" id="form-message" hidden role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Дмитрий Кошкин & София Собакина</p>
+    <p>09 · 09 · 2029</p>
+    <a href="#top" class="footer__top">Наверх ↑</a>
+    <span class="footer__demo">Демонстрационный сайт-приглашение</span>
+  </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

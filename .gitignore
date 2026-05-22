@@ -1,0 +1,12 @@
+# Служебные и черновики
+image_original.png
+*carve.photos*
+*no-bg-preview*
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.cursor/
+.vscode/
+*.log
